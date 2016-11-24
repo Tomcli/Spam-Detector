@@ -53,7 +53,7 @@ def run():
 	data = pd.merge(ham_frame,spam_frame, on='Word')
 	data = data.loc[(data['Word'].str.isalpha()) & (data['Word'].str.len() > 1)]
 	new_data = data.loc[(data['H_Frequency'] >= 300) ^ (data['S_Frequency'] >= 300)]
-	new_data['H-S'] = pd.Series(new_data.H_Frequency - new_data.S_Frequency, index=new_data.index)
+	new_data['H-S'] = pd.Series((new_data.H_Frequency - new_data.S_Frequency)/1500., index=new_data.index)
 	print new_data
 	print 'Finish detection'
 
