@@ -15,4 +15,4 @@ Result: This filter generally has 15% to 20% error rate which is good for a simp
 
 ##Method 2
 
-Create a spam filter based on the word frequency with machine learning classifier. We score each mail by the word frequency based on our training data. Then we will create a spam classifier with random forest/support vector machine based on the word frequency.
+Create a spam filter based on the word frequency grouped by feature with machine learning classifier. We score each mail by the word frequency based on our training data. Then we will create a spam classifier with random forest/support vector machine based on the word frequency.

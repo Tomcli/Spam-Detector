@@ -23,9 +23,9 @@ def run():
 				words = inputs.split()
 				for word in words:
 					if text_ham.get(word) != None:
-						text_ham[word] = text_ham[word] + 1
+						text_ham[word.lower()] = text_ham[word.lower()] + 1
 					else:
-						text_ham[word] = 1
+						text_ham[word.lower()] = 1
 				txt.close()
 		# print 'Number of hams:', len(files)
 	for root, dirs, files in os.walk("enron1/spam/"):
@@ -39,9 +39,9 @@ def run():
 				words = inputs.split()
 				for word in words:
 					if text_spam.get(word) != None:
-						text_spam[word] = text_spam[word] + 1
+						text_spam[word.lower()] = text_spam[word.lower()] + 1
 					else:
-						text_spam[word] = 1
+						text_spam[word.lower()] = 1
 				txt.close()
 		# print 'Number of spams:', len(files)
 	# print text_ham
@@ -68,8 +68,8 @@ def run():
 				words = inputs.split()
 				score = 0
 				for word in words:
-					if data_dic.get(word) != None:
-						score+= data_dic[word]
+					if data_dic.get(word.lower()) != None:
+						score+= data_dic[word.lower()]
 				if score >= 0:
 					h_count+=1
 				txt.close()
@@ -84,14 +84,18 @@ def run():
 				words = inputs.split()
 				score = 0
 				for word in words:
-					if data_dic.get(word) != None:
-						score+= data_dic[word]
+					if data_dic.get(word.lower()) != None:
+						score+= data_dic[word.lower()]
 				if score < 0:
 					sp_count+=1
 				txt.close()
 		print 'Number of testing spams:', len(files)
 		print 'Correctness:', float(sp_count)/len(files)
-	print 'Finish detection'
+	print 'Finish detection method 1'
+
+	# english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+	# english = [x for x in english_vocab]
+	# print len(english)
 
 if __name__ == '__main__':
     run()
