@@ -7,9 +7,17 @@ from parse import *
 from datetime import datetime
 import nltk
 import os
+from sklearn.feature_extraction.text import CountVectorizer
 
 text_ham = {}
 text_spam = {}
+
+#def data_frame(files, ham):
+
+# text = pd.DataFrame({'text': [], 'class': []})
+# text = text.append(data_frame("enron1/ham/", "ham"))
+# text = text.append(data_frame("enron1/spam/", "spam"))
+# print text
 
 def run():
 	for root, dirs, files in os.walk("enron1/ham/"):
@@ -92,6 +100,10 @@ def run():
 		print 'Number of testing spams:', len(files)
 		print 'Correctness:', float(sp_count)/len(files)
 	print 'Finish detection method 1'
+
+	#count_vectorizer = CountVectorizer()
+	#counts = count_vectorizer.fit_transform(text['text'].values)
+	#print counts
 
 	# english_vocab = set(w.lower() for w in nltk.corpus.words.words())
 	# english = [x for x in english_vocab]
